@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="js/aes-lib/aes.js"></script>
+    <script src="js/aes-lib/aes-cipher-wrapper.js"></script>
+
+    <title>测试 AES 加密</title>
+</head>
+
+<body>
+
+<script>
+    console.log('>>>>>>>>>>> 测试开始……');
+
+    const aesWrapper = window.AESCipherWrapper;
+    const key = '16BytesLengthKey';
+    const dataStr = "abc`~!@#$%^&*()_+-=':;<>?,./|{}[]\\\"xyz123中文";
+
+    console.log('原始字符串：', dataStr);
+    console.log('秘钥：', key);
+
+    var encryptedStr = aesWrapper.encrypt(dataStr, key);
+    console.log('加密后得到的 Base64 字符串：', encryptedStr);
+
+    var oriStr = aesWrapper.decrypt(encryptedStr, key);
+    console.log('解密后得到的字符串：', oriStr);
+    console.log('<<<<<<<<<<< 测试结束！');
+
+</script>
+
+</body>
+
+</html>
